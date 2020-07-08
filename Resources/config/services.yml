@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    public: true
+
+  react.queue:
+    class: Morbo\React\Queue\Service\Queue
+    arguments: ["@service_container", "@react.loop"]
+
+  Morbo\React\Queue\Service\Queue: '@react.queue'

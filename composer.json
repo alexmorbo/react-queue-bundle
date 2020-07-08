@@ -1,0 +1,37 @@
+{
+    "name": "alexmorbo/react-queue-bundle",
+    "description": "ReactPHP Service for queue",
+    "keywords": ["reactphp", "queue", "asyncphp"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Morbo",
+            "email": "alex@morbo.ru"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "symfony/framework-bundle": "^5.0",
+        "symfony/dependency-injection": "^5.0",
+        "symfony/yaml": "^5.0",
+        "alexmorbo/react-redis-bundle": "0.*",
+        "alexmorbo/react-amqp-bundle": "0.*"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Morbo\\React\\Queue\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.x-dev"
+        }
+    }
+}
