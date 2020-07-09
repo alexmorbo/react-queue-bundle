@@ -38,7 +38,7 @@ class RedisAdapter extends AbstractAdapter
 
     public function send(string $queue, string $value, bool $sendToQueueStart = false): PromiseInterface
     {
-        $cmd = $sendToQueueStart ? 'lpush' : 'rpush';
+        $cmd = $sendToQueueStart ? 'rpush' : 'lpush';
 
         return $this->client->$cmd($this->fixKey($queue), $value);
     }
@@ -53,7 +53,7 @@ class RedisAdapter extends AbstractAdapter
             function (TimerInterface $timer) use ($queue, $deferred, &$block) {
                 if (!$block) {
                     $block = true;
-                    $this->client->lpop($this->fixKey($queue))
+                    $this->client->rpop($this->fixKey($queue))
                         ->then(
                             function (?string $result) use ($timer, $deferred, &$block) {
                                 if (!is_null($result)) {
